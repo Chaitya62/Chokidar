@@ -72,13 +72,13 @@ $(function() {
   // Log a message
     const log = (message, options) => {
     
-    $.ajax({
-       url:urlx+encodeURI(message),
-       headers:{"Access-Control-Allow-Headers": "*"}, 
-       success: function(data){ 
+    //$.ajax({
+      // url:urlx+encodeURI(message),
+      // headers:{"Access-Control-Allow-Headers": "*"}, 
+      // success: function(data){ 
            var $el = $('<li>').addClass('log').text(message);
            addMessageElement($el, options);
-    }})
+    //}})
   }
 
   // Adds the visual chat message to the message list
@@ -252,12 +252,12 @@ $(function() {
   // Whenever the server emits 'new message', update the chat body
   socket.on('new message', (data) => {
     console.log(data.message)
-    $.ajax({
+   $.ajax({
        url:urlx+encodeURI(data.message),
        headers:{"Access-Control-Allow-Headers": "*"}, 
        success: function(filteredMessage){
            
-           data.message = filteredMessage 
+           data.message = data.message
            addChatMessage(data);
     }})
   });
