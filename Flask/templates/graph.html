@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Test Filteration</title>
+    <style>
+        .active-pink-2 input[type=text]:focus:not([readonly]) {
+            border-bottom: 1px solid #f48fb1;
+            box-shadow: 0 1px 0 0 #f48fb1;
+        }
+
+        .active-pink input[type=text] {
+            border-bottom: 1px solid #f48fb1;
+            box-shadow: 0 1px 0 0 #f48fb1;
+        }
+
+        .active-purple-2 input[type=text]:focus:not([readonly]) {
+            border-bottom: 1px solid #ce93d8;
+            box-shadow: 0 1px 0 0 #ce93d8;
+        }
+
+        .active-purple input[type=text] {
+            border-bottom: 1px solid #ce93d8;
+            box-shadow: 0 1px 0 0 #ce93d8;
+        }
+
+        .active-cyan-2 input[type=text]:focus:not([readonly]) {
+            border-bottom: 1px solid #4dd0e1;
+            box-shadow: 0 1px 0 0 #4dd0e1;
+        }
+
+        .active-cyan input[type=text] {
+            border-bottom: 1px solid #4dd0e1;
+            box-shadow: 0 1px 0 0 #4dd0e1;
+        }
+
+        .chart {
+            width: 300px
+        }
+
+        #myChart {
+            text-align: center;
+            margin: 50px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search {
+            margin-left: auto;
+            margin-right: auto;
+            width: 600px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="md-form active-pink-2 mb-3 center-block" id="chart">
+        <canvas class="center-block" id="myChart" width="900px" height="500"></canvas>
+        <input class="form-control pagination-centered search" id="myInput" type="text" placeholder="Search"
+            aria-label="Search">
+    </div>
+    <script>
+        ctx = document.getElementById('myChart').getContext('2d');;
+        options = {
+            scales: {
+                xAxes: [{
+                    barPercentage: 0.5,
+                    barThickness: 6,
+                    maxBarThickness: 8,
+                    minBarLength: 2,
+                    gridLines: {
+                        offsetGridLines: true
+                    }
+                }]
+            }
+        };
+        var mixedChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                datasets: [{
+                    label: 'Content Moderation',
+                    data: [],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+
+                }],
+                labels: ["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"]
+            },
+            options: {
+                responsive: false,
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100
+                    }
+                  }]
+                }
+            }
+        });
+
+        var typingTimer; //timer identifier
+        var doneTypingInterval = 1000; //time in ms, 5 second for example
+
+        var $input = $('#myInput');
+        //on keyup, start the countdown
+        $input.on('keyup', function () {
+            clearTimeout(typingTimer);
+            typingTimer = setTimeout(doneTyping, doneTypingInterval);
+        });
+
+        //on keydown, clear the countdown
+        $input.on('keydown', function () {
+            clearTimeout(typingTimer);
+        });
+
+        //user is "finished typing," do something
+        function doneTyping() {
+            console.log(document.getElementById("myInput").value)
+            searchText = document.getElementById("myInput").value
+
+            if (searchText !== '') {
+                $.get('/test?str=' + searchText, (data) => {
+                    chartData = [data["toxic"] * 100, data["severe_toxic"] * 100, data["obscene"] * 100, data["threat"] * 100, data[
+                        "insult"] * 100, data["identity_hate"] * 100]
+                    // new_data = [{
+                    //     label: 'Content Moderation',
+                    //     data: chartData,
+                    //     backgroundColor: [
+                    //         'rgba(255, 99, 132, 0.2)',
+                    //         'rgba(54, 162, 235, 0.2)',
+                    //         'rgba(255, 206, 86, 0.2)',
+                    //         'rgba(75, 192, 192, 0.2)',
+                    //         'rgba(153, 102, 255, 0.2)',
+                    //         'rgba(255, 159, 64, 0.2)'
+                    //     ],
+                    //     borderColor: [
+                    //         'rgba(255, 99, 132, 1)',
+                    //         'rgba(54, 162, 235, 1)',
+                    //         'rgba(255, 206, 86, 1)',
+                    //         'rgba(75, 192, 192, 1)',
+                    //         'rgba(153, 102, 255, 1)',
+                    //         'rgba(255, 159, 64, 1)'
+                    //     ],
+                    //     borderWidth: 1
+                    // }]
+                    // mixedChart.data.labels.pop();
+                    mixedChart.data.datasets.forEach((dataset) => {
+                        dataset.data.pop();
+
+                      dataset.data = chartData
+                    });
+                    mixedChart.update();
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+venv/
+merger/
+*.cyc
+.vscode/
+__pycache__/
+data/
+.DS_Store

@@ -1,0 +1,9 @@
+
+#Install python3
+brew install python3
+
+#Install pydub
+pip3 install pydub
+
+#Install ffmpeg
+brew install ffmpeg

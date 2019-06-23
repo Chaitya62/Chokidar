@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"
+        ></script>
+        <title>Video Streaming Demonstration</title>
+    </head>
+    <body>
+        <h1>Video Streaming Demonstration</h1>
+        <img id="bg" src="{{ url_for('video_feed') }}" style="display: none" />
+        <canvas id="canvas" width="1920" height="1080"></canvas>
+        <!-- <audio id="audio" controls>
+            <source src="" type="audio/mp3" />
+            <source src="asdf.mp3" type="audio/mp3">
+        </audio> -->
+        <audio id="audiodummy" controls>
+                <source src="{{ url_for('audio_feed') }}" type="audio/mp3" />
+                <!-- <source src="asdf.mp3" type="audio/mp3"> -->
+            </audio>
+        <script src="https://cdn.agora.io/sdk/web/AgoraRTCSDK-2.6.1.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>
+
+<script type="text/javascript">
+    setInterval(function() {
+        setCanvas();
+    }, 10);
+
+    function setCanvas() {
+        var c = document.getElementById("canvas");
+        var ctx = c.getContext("2d");
+        var img = document.getElementById("bg");
+        ctx.drawImage(img, 10, 10);
+    }
+</script>
