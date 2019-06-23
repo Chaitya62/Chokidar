@@ -1,0 +1,14 @@
+{
+	"auth": {
+		"uploader0e111dd7": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"storage": {
+		"filterwords": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation"
+		}
+	}
+}

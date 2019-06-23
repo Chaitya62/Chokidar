@@ -1,0 +1,51 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "uploader-react-20190623082254-authRole",
+			"UnauthRoleArn": "arn:aws:iam::612631146143:role/uploader-react-20190623082254-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::612631146143:role/uploader-react-20190623082254-authRole",
+			"Region": "ap-south-1",
+			"DeploymentBucketName": "uploader-react-20190623082254-deployment",
+			"UnauthRoleName": "uploader-react-20190623082254-unauthRole",
+			"StackName": "uploader-react-20190623082254",
+			"StackId": "arn:aws:cloudformation:ap-south-1:612631146143:stack/uploader-react-20190623082254/ffd75820-9561-11e9-8cf3-0af78aa5c40c"
+		}
+	},
+	"auth": {
+		"uploader0e111dd7": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/uploader-react-20190623082254-deployment/amplify-cfn-templates/auth/uploader0e111dd7-cloudformation-template.yml",
+				"logicalId": "authuploader0e111dd7"
+			},
+			"lastPushTimeStamp": "2019-06-23T03:15:07.004Z",
+			"output": {
+				"AppClientSecret": "1jhqpa1ptqu78ubn5lqo91c1giu7nk9khu2v8tb07o4qphurpufe",
+				"UserPoolId": "ap-south-1_6H2ER7mjP",
+				"AppClientIDWeb": "6ggiu9lavu2jm2364jhqgto64g",
+				"AppClientID": "7hp1cmq9as4t4a2olfnesimeb5",
+				"IdentityPoolId": "ap-south-1:fcc7bbde-a654-49bf-a390-b93a7a22e526",
+				"IdentityPoolName": "uploader0e111dd7_identitypool_0e111dd7__react",
+				"UserPoolName": "uploader0e111dd7_userpool_0e111dd7"
+			},
+			"lastPushDirHash": "8GVaOPfAPzDTlZq3NVO8W8/m1hw="
+		}
+	},
+	"storage": {
+		"filterwords": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/uploader-react-20190623082254-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+				"logicalId": "storagefilterwords"
+			},
+			"lastPushTimeStamp": "2019-06-23T03:15:07.006Z",
+			"output": {
+				"BucketName": "filterwordsfiles-react",
+				"Region": "ap-south-1"
+			},
+			"lastPushDirHash": "cykbDkrhuQT++eER/cGqhEIQuRg="
+		}
+	}
+}

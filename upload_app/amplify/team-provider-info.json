@@ -1,0 +1,19 @@
+{
+    "react": {
+        "awscloudformation": {
+            "AuthRoleName": "uploader-react-20190623082254-authRole",
+            "UnauthRoleArn": "arn:aws:iam::612631146143:role/uploader-react-20190623082254-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::612631146143:role/uploader-react-20190623082254-authRole",
+            "Region": "ap-south-1",
+            "DeploymentBucketName": "uploader-react-20190623082254-deployment",
+            "UnauthRoleName": "uploader-react-20190623082254-unauthRole",
+            "StackName": "uploader-react-20190623082254",
+            "StackId": "arn:aws:cloudformation:ap-south-1:612631146143:stack/uploader-react-20190623082254/ffd75820-9561-11e9-8cf3-0af78aa5c40c"
+        },
+        "categories": {
+            "auth": {
+                "uploader0e111dd7": {}
+            }
+        }
+    }
+}
