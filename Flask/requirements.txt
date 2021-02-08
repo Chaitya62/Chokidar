@@ -24,7 +24,7 @@ google-auth-oauthlib==0.3.0
 google-pasta==0.1.7
 grpcio==1.21.1
 h5py==2.9.0
-httplib2==0.12.3
+httplib2==0.19.0
 ibm-cloud-sdk-core==0.5.1
 ibm-watson==3.0.4
 idna==2.8
